@@ -1,1 +1,1 @@
-console.log("BallAR-Tracker System");
+console.log("BallAR-Tracker");
