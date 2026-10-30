@@ -1,4 +1,4 @@
-name: Data Schema Linter
+name: SQL Linter
 
 on:
   push:
@@ -9,16 +9,10 @@ jobs:
   SQLLinter:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Checkout Code in Repository
+        uses: "actions/checkout@v3"
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install SQLFluff Linter
-        run: pip install sqlfluff
-
-      - name: Lint SQL Data Schema
-        run: sqlfluff lint DataSchema.sql --dialect postgres
+      - name: Start SQL Linter
+        run: |
+          pip install sqlfluff
+          sqlfluff lint $GITHUB_WORKSPACE/DataSchema.sql --dialect postgres
