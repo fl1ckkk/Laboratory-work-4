@@ -1,0 +1,21 @@
+name: JavaScript Code Linter
+
+on:
+  push:
+    branches: [main, master, laboratory-work-4]
+  workflow_dispatch:
+
+jobs:
+  JavaScriptCodeLinter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code in Repository
+        uses: actions/checkout@v3
+
+      - name: Install JSON Linter Biome
+        run: |
+          npm install --save-dev --save-exact @biomejs/biome
+
+      - name: Validate all js-file
+        run: |
+          npx @biomejs/biome check ProgramCode.js || true
