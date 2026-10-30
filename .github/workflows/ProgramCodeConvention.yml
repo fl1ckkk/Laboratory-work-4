@@ -18,4 +18,4 @@ jobs:
 
       - name: Validate all js-file
         run: |
-          npx @biomejs/biome check ProgramCode.js || true
+          npx @biomejs/biome check ProgramCodeModified.js
